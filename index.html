@@ -225,7 +225,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem;tex
         <a href="https://github.com/Manju735" target="_blank" class="btn-outline">GitHub ↗</a>
       </div>
       <div class="hero-stats">
-        <div><div class="stat-num">3</div><div class="stat-label">PROJECTS BUILT</div></div>
+        <div><div class="stat-num">5</div><div class="stat-label">PROJECTS BUILT</div></div>
         <div><div class="stat-num">C</div><div class="stat-label">PRIMARY LANGUAGE</div></div>
         <div><div class="stat-num">4+</div><div class="stat-label">PROTOCOLS LEARNING</div></div>
         <div><div class="stat-num">∞</div><div class="stat-label">CURIOSITY</div></div>
@@ -331,42 +331,97 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem;tex
     <h2 class="section-title">What I've Built</h2>
     <div class="divider"></div>
     <div class="projects-grid">
+
+      <!-- PROJECT 1 -->
       <div class="project-card fade-up">
         <div class="project-top">
           <div class="project-num">PROJECT_01</div>
+          <div class="project-icon icon-purple">🔍</div>
+          <div class="project-title">Inverted Search Engine</div>
+          <p class="project-desc">A high-performance search engine in C — just like how Google indexes the web. Builds an inverted index using Hash Tables & Linked Lists so keyword searches across thousands of files happen in O(1) time instead of scanning every file.</p>
+          <div class="project-tech">
+            <span class="tech-pill">C</span>
+            <span class="tech-pill">Hash Tables</span>
+            <span class="tech-pill">Linked Lists</span>
+            <span class="tech-pill">Dynamic Memory</span>
+            <span class="tech-pill">File Handling</span>
+            <span class="tech-pill">Modular Code</span>
+          </div>
+        </div>
+        <div class="project-bottom"><a href="https://github.com/Manju735/inverted_project" target="_blank" class="project-link">View on GitHub ↗</a></div>
+      </div>
+
+      <!-- PROJECT 2 -->
+      <div class="project-card fade-up">
+        <div class="project-top">
+          <div class="project-num">PROJECT_02</div>
           <div class="project-icon icon-purple">🔐</div>
           <div class="project-title">LSB Steganography</div>
-          <p class="project-desc">Hides secret messages inside BMP images by replacing the Least Significant Bit of every pixel byte. Invisible to the human eye. Supports any file extension encoding with metadata storage.</p>
+          <p class="project-desc">Hides secret messages inside BMP images by replacing the Least Significant Bit of every pixel byte. Completely invisible to the human eye. Supports any file extension with full metadata encoding and decoding.</p>
           <div class="project-tech">
-            <span class="tech-pill">Embedded C</span><span class="tech-pill">Bitwise Ops</span><span class="tech-pill">Binary File I/O</span><span class="tech-pill">Structs</span><span class="tech-pill">CLI Args</span>
+            <span class="tech-pill">Embedded C</span>
+            <span class="tech-pill">Bitwise Ops</span>
+            <span class="tech-pill">Binary File I/O</span>
+            <span class="tech-pill">Structs</span>
+            <span class="tech-pill">CLI Args</span>
           </div>
         </div>
         <div class="project-bottom"><a href="https://github.com/Manju735/Steganograpy" target="_blank" class="project-link">View on GitHub ↗</a></div>
       </div>
+
+      <!-- PROJECT 3 -->
       <div class="project-card fade-up">
         <div class="project-top">
-          <div class="project-num">PROJECT_02</div>
+          <div class="project-num">PROJECT_03</div>
           <div class="project-icon icon-cyan">📒</div>
           <div class="project-title">Address Book</div>
-          <p class="project-desc">Full CLI contact management system — add, search, edit, delete contacts. Name, phone & email validation. Data persisted to file using File I/O. No database, pure C.</p>
+          <p class="project-desc">Full CLI contact management system — add, search, edit, delete contacts with name, phone & email validation. Data persisted to file using File I/O. No database, no libraries — pure C from scratch.</p>
           <div class="project-tech">
-            <span class="tech-pill">C</span><span class="tech-pill">Structs</span><span class="tech-pill">File Handling</span><span class="tech-pill">String Ops</span><span class="tech-pill">Modular Code</span>
+            <span class="tech-pill">C</span>
+            <span class="tech-pill">Structs & Arrays</span>
+            <span class="tech-pill">File Handling</span>
+            <span class="tech-pill">String Ops</span>
+            <span class="tech-pill">Modular Code</span>
           </div>
         </div>
         <div class="project-bottom"><a href="https://github.com/Manju735/address-book-project" target="_blank" class="project-link">View on GitHub ↗</a></div>
       </div>
+
+      <!-- PROJECT 4 -->
       <div class="project-card fade-up">
         <div class="project-top">
-          <div class="project-num">PROJECT_03</div>
+          <div class="project-num">PROJECT_04</div>
           <div class="project-icon icon-green">🎵</div>
           <div class="project-title">MP3 Tag Reader</div>
-          <p class="project-desc">Binary file parser that reads ID3 metadata from MP3 files — title, artist, album, year, genre. Directly seeks to the last 128 bytes and reads fixed-size fields. No external libraries.</p>
+          <p class="project-desc">Binary file parser that reads ID3 metadata from MP3 files — title, artist, album, year, genre. Directly seeks to the last 128 bytes and reads fixed-size fields. No external libraries, pure binary parsing.</p>
           <div class="project-tech">
-            <span class="tech-pill">C</span><span class="tech-pill">Binary Parsing</span><span class="tech-pill">fseek/fread</span><span class="tech-pill">Struct Mapping</span>
+            <span class="tech-pill">C</span>
+            <span class="tech-pill">Binary Parsing</span>
+            <span class="tech-pill">fseek / fread</span>
+            <span class="tech-pill">Struct Mapping</span>
           </div>
         </div>
         <div class="project-bottom"><a href="https://github.com/Manju735/Mp3_tag_reader" target="_blank" class="project-link">View on GitHub ↗</a></div>
       </div>
+
+      <!-- PROJECT 5 -->
+      <div class="project-card fade-up">
+        <div class="project-top">
+          <div class="project-num">PROJECT_05</div>
+          <div class="project-icon icon-cyan">🔢</div>
+          <div class="project-title">Arithmetic Process Calculator (APC)</div>
+          <p class="project-desc">A modular arithmetic calculator in C — each operation (add, subtract, multiply, divide) split into separate .c files with a shared header. Demonstrates clean software architecture and modular programming principles used in real embedded codebases.</p>
+          <div class="project-tech">
+            <span class="tech-pill">C</span>
+            <span class="tech-pill">Modular Design</span>
+            <span class="tech-pill">Header Files</span>
+            <span class="tech-pill">Separate Compilation</span>
+            <span class="tech-pill">GCC</span>
+          </div>
+        </div>
+        <div class="project-bottom"><a href="https://github.com/Manju735/APC" target="_blank" class="project-link">View on GitHub ↗</a></div>
+      </div>
+
     </div>
   </div>
 </section>
