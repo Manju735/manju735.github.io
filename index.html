@@ -2,7 +2,634 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
+<meta name="viewport" content="w<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Manjunatha H — Embedded Systems Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#0b0612;--bg2:#110d1e;--bg3:#1a1430;
+  --purple:#7c3aed;--purple2:#9d5ff3;--purple3:#c084fc;
+  --white:#f8f6ff;--muted:#9b8fbc;--border:#2a1f4a;
+  --cyan:#00d4ff;--green:#00e5a0;
+  --font:'Space Grotesk',sans-serif;--mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--white);font-family:var(--font);overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--purple);border-radius:2px;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(11,6,18,0.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px;}
+.nav-logo{font-family:var(--mono);font-size:1rem;color:var(--purple3);}
+.nav-logo span{color:var(--white);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.85rem;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--purple3);}
+.nav-cta{background:var(--purple);color:#fff;border:none;padding:0.45rem 1.2rem;border-radius:6px;font-family:var(--font);font-size:0.82rem;font-weight:600;cursor:pointer;transition:background 0.2s;}
+.nav-cta:hover{background:var(--purple2);}
+@media(max-width:700px){.nav-links{display:none;}}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:0 2rem;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;opacity:0.3;}
+.hero-glow{position:absolute;top:-200px;left:40%;width:700px;height:700px;background:radial-gradient(circle,rgba(124,58,237,0.2) 0%,transparent 70%);pointer-events:none;}
+.hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1;padding-top:60px;display:grid;grid-template-columns:1fr auto;gap:4rem;align-items:center;width:100%;}
+@media(max-width:860px){.hero-inner{grid-template-columns:1fr;}.hero-photo-wrap{display:none;}}
+.hero-left{}
+.hero-tag{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.4);border-radius:100px;padding:0.35rem 1rem;font-size:0.78rem;font-family:var(--mono);color:var(--purple3);margin-bottom:1.5rem;}
+.hero-tag::before{content:'';width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+h1.hero-name{font-size:clamp(2.4rem,5vw,4.5rem);font-weight:700;line-height:1.05;letter-spacing:-0.02em;margin-bottom:0.5rem;}
+.line1{color:var(--white);}
+.line2{color:transparent;-webkit-text-stroke:1.5px var(--purple2);}
+.hero-role{font-family:var(--mono);font-size:0.9rem;color:var(--purple3);margin-bottom:1.2rem;letter-spacing:0.05em;}
+.hero-desc{font-size:1rem;color:var(--muted);max-width:500px;line-height:1.75;margin-bottom:2rem;}
+.hero-desc strong{color:var(--white);}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--purple);color:#fff;padding:0.75rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;transition:all 0.2s;display:inline-block;}
+.btn-primary:hover{background:var(--purple2);transform:translateY(-2px);}
+.btn-outline{background:transparent;color:var(--white);padding:0.75rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:500;font-size:0.9rem;border:1px solid var(--border);transition:all 0.2s;display:inline-block;}
+.btn-outline:hover{border-color:var(--purple);color:var(--purple3);}
+.hero-stats{display:flex;gap:2.5rem;margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--border);flex-wrap:wrap;}
+.stat-num{font-size:1.8rem;font-weight:700;color:var(--white);font-family:var(--mono);}
+.stat-label{font-size:0.72rem;color:var(--muted);margin-top:0.2rem;letter-spacing:0.06em;}
+
+/* PHOTO */
+.hero-photo-wrap{display:flex;flex-direction:column;align-items:center;gap:1.2rem;}
+.photo-ring{width:230px;height:230px;border-radius:50%;padding:4px;background:linear-gradient(135deg,var(--purple),var(--purple3),var(--cyan));position:relative;}
+.photo-ring::before{content:'';position:absolute;inset:-6px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--purple3),var(--cyan));opacity:0.25;filter:blur(10px);}
+.photo-inner{width:100%;height:100%;border-radius:50%;overflow:hidden;border:4px solid var(--bg);}
+.photo-inner img{width:100%;height:100%;object-fit:cover;}
+.photo-badge{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:0.6rem 1.2rem;font-family:var(--mono);font-size:0.75rem;text-align:center;}
+.photo-badge .pb-name{color:var(--white);font-weight:700;font-size:0.85rem;}
+.photo-badge .pb-role{color:var(--purple3);margin-top:0.15rem;}
+.photo-badge .pb-status{color:var(--green);margin-top:0.15rem;font-size:0.7rem;}
+
+/* SECTIONS */
+section{padding:6rem 2rem;}
+.section-inner{max-width:1100px;margin:0 auto;}
+.section-tag{font-family:var(--mono);font-size:0.75rem;color:var(--purple3);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.75rem;}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--white);margin-bottom:1rem;letter-spacing:-0.02em;}
+.section-sub{color:var(--muted);font-size:1rem;max-width:540px;line-height:1.7;margin-bottom:3rem;}
+.divider{width:48px;height:3px;background:var(--purple);border-radius:2px;margin-bottom:3rem;}
+
+/* ABOUT */
+#about{background:var(--bg2);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr;}}
+.about-card{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:2rem;}
+.about-card h3{font-size:0.85rem;color:var(--purple3);font-family:var(--mono);margin-bottom:1.2rem;letter-spacing:0.05em;}
+.info-row{display:flex;justify-content:space-between;padding:0.6rem 0;border-bottom:1px solid var(--border);font-size:0.85rem;gap:1rem;}
+.info-row:last-child{border-bottom:none;}
+.info-label{color:var(--muted);white-space:nowrap;}
+.info-val{color:var(--white);font-weight:500;text-align:right;}
+.about-text p{color:var(--muted);line-height:1.8;font-size:0.95rem;margin-bottom:1rem;}
+.about-text p strong{color:var(--white);}
+
+/* SKILLS */
+#skills{background:var(--bg);}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;}
+.skill-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.5rem;transition:border-color 0.2s;}
+.skill-card:hover{border-color:var(--purple);}
+.skill-card-title{font-size:0.75rem;font-family:var(--mono);color:var(--purple3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.2rem;display:flex;align-items:center;gap:0.5rem;}
+.skill-card-title::before{content:'';width:6px;height:6px;background:var(--purple);border-radius:50%;}
+.skill-item{margin-bottom:1rem;}
+.skill-name{display:flex;justify-content:space-between;font-size:0.85rem;color:var(--white);margin-bottom:0.4rem;}
+.skill-pct{color:var(--muted);font-family:var(--mono);font-size:0.75rem;}
+.skill-bar{height:4px;background:var(--border);border-radius:2px;overflow:hidden;}
+.skill-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--purple),var(--purple3));}
+.badge-row{display:flex;flex-wrap:wrap;gap:0.5rem;}
+.badge{padding:0.3rem 0.8rem;border-radius:100px;font-size:0.75rem;font-weight:600;font-family:var(--mono);}
+.badge-learn{background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.4);color:var(--purple3);}
+.badge-done{background:rgba(0,229,160,0.1);border:1px solid rgba(0,229,160,0.35);color:var(--green);}
+.badge-tool{background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);color:var(--cyan);}
+
+/* PROJECTS */
+#projects{background:var(--bg2);}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;}
+.project-card{background:var(--bg);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all 0.25s;display:flex;flex-direction:column;}
+.project-card:hover{border-color:var(--purple);transform:translateY(-4px);}
+.project-top{padding:1.5rem 1.5rem 0;}
+.project-num{font-family:var(--mono);font-size:0.7rem;color:var(--purple);letter-spacing:0.1em;margin-bottom:0.8rem;}
+.project-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:0.8rem;}
+.icon-purple{background:rgba(124,58,237,0.2);}
+.icon-cyan{background:rgba(0,212,255,0.1);}
+.icon-green{background:rgba(0,229,160,0.1);}
+.project-title{font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:0.6rem;}
+.project-desc{color:var(--muted);font-size:0.87rem;line-height:1.7;margin-bottom:1rem;}
+.project-tech{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1rem;}
+.tech-pill{background:var(--bg3);border:1px solid var(--border);color:var(--muted);font-size:0.72rem;font-family:var(--mono);padding:0.2rem 0.6rem;border-radius:4px;}
+.project-bottom{padding:1rem 1.5rem 1.5rem;border-top:1px solid var(--border);margin-top:auto;}
+.project-link{color:var(--purple3);text-decoration:none;font-size:0.82rem;font-weight:600;transition:color 0.2s;}
+.project-link:hover{color:var(--white);}
+
+/* TIMELINE */
+#timeline{background:var(--bg);}
+.timeline{position:relative;max-width:680px;}
+.timeline::before{content:'';position:absolute;left:18px;top:0;bottom:0;width:2px;background:var(--border);}
+.tl-item{position:relative;padding-left:56px;margin-bottom:2.5rem;}
+.tl-dot{position:absolute;left:10px;top:4px;width:18px;height:18px;border-radius:50%;border:2px solid var(--purple);background:var(--bg);display:flex;align-items:center;justify-content:center;}
+.tl-dot-inner{width:8px;height:8px;background:var(--purple);border-radius:50%;}
+.tl-date{font-family:var(--mono);font-size:0.72rem;color:var(--purple3);letter-spacing:0.08em;margin-bottom:0.4rem;}
+.tl-title{font-size:1rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+.tl-sub{font-size:0.82rem;color:var(--muted);margin-bottom:0.4rem;}
+.tl-desc{font-size:0.84rem;color:var(--muted);line-height:1.65;}
+
+/* BLOG */
+#blog{background:var(--bg2);}
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
+.blog-card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:1.5rem;transition:all 0.2s;}
+.blog-card:hover{border-color:var(--purple);transform:translateY(-3px);}
+.blog-tag{display:inline-block;background:rgba(124,58,237,0.15);color:var(--purple3);font-size:0.72rem;font-family:var(--mono);padding:0.2rem 0.7rem;border-radius:4px;margin-bottom:0.8rem;}
+.blog-title{font-size:0.95rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;line-height:1.4;}
+.blog-excerpt{font-size:0.82rem;color:var(--muted);line-height:1.65;margin-bottom:1rem;}
+.blog-meta{font-size:0.72rem;color:var(--muted);font-family:var(--mono);display:flex;justify-content:space-between;}
+
+/* CONTACT */
+#contact{background:var(--bg);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr;}}
+.contact-link{display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--bg2);border:1px solid var(--border);border-radius:10px;text-decoration:none;color:var(--white);margin-bottom:0.8rem;transition:all 0.2s;}
+.contact-link:hover{border-color:var(--purple);background:var(--bg3);}
+.contact-icon{width:40px;height:40px;background:rgba(124,58,237,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;font-weight:700;color:var(--purple3);}
+.contact-info-text{font-size:0.78rem;color:var(--muted);}
+.contact-info-val{font-size:0.88rem;color:var(--white);font-weight:500;}
+.contact-form{display:flex;flex-direction:column;gap:1rem;}
+.form-group{display:flex;flex-direction:column;gap:0.4rem;}
+.form-group label{font-size:0.78rem;color:var(--muted);font-family:var(--mono);}
+.form-group input,.form-group textarea{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:0.75rem 1rem;color:var(--white);font-family:var(--font);font-size:0.9rem;outline:none;transition:border-color 0.2s;resize:none;}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--purple);}
+.form-group textarea{height:110px;}
+.form-submit{background:var(--purple);color:#fff;border:none;padding:0.85rem;border-radius:8px;font-family:var(--font);font-size:0.95rem;font-weight:600;cursor:pointer;transition:background 0.2s;}
+.form-submit:hover{background:var(--purple2);}
+
+/* RESUME SECTION */
+#resume{background:var(--bg2);}
+.resume-box{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:3rem;text-align:center;max-width:560px;margin:0 auto;}
+.resume-icon{font-size:3rem;margin-bottom:1rem;}
+.resume-box h3{font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:0.8rem;}
+.resume-box p{color:var(--muted);font-size:0.9rem;line-height:1.7;margin-bottom:2rem;}
+.resume-btn{display:inline-flex;align-items:center;gap:0.5rem;background:var(--purple);color:#fff;padding:0.85rem 2rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.95rem;transition:all 0.2s;}
+.resume-btn:hover{background:var(--purple2);transform:translateY(-2px);}
+.resume-note{margin-top:1rem;font-size:0.78rem;color:var(--muted);font-family:var(--mono);}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem;text-align:center;}
+.footer-logo{font-family:var(--mono);color:var(--purple3);font-size:0.9rem;margin-bottom:0.5rem;}
+.footer-copy{font-size:0.78rem;color:var(--muted);}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo"><span>manju</span>.dev</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#timeline">Journey</a></li>
+      <li><a href="#blog">Posts</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Hire Me</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-tag">🟢 Open to Embedded Systems Roles</div>
+      <h1 class="hero-name">
+        <div class="line1">Manjunatha H</div>
+        <div class="line2">Embedded Dev.</div>
+      </h1>
+      <div class="hero-role">// Embedded C · C++ · Embedded Linux · RTOS · EEE Engineer</div>
+      <p class="hero-desc">
+        I build things at the <strong>bit level</strong>. Passionate about low-level C programming, memory management, and hardware-software interaction. Hands-on with <strong>UART · I2C · SPI · CAN · RTOS</strong> and Linux Internals, with real automotive projects on PIC18.
+      </p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-primary">View My Projects</a>
+        <a href="resume.pdf" download class="btn-outline">⬇ Download Resume</a>
+        <a href="https://github.com/Manju735" target="_blank" class="btn-outline">GitHub ↗</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-num">7</div><div class="stat-label">PROJECTS BUILT</div></div>
+        <div><div class="stat-num">C</div><div class="stat-label">PRIMARY LANGUAGE</div></div>
+        <div><div class="stat-num">4+</div><div class="stat-label">PROTOCOLS COMPLETED</div></div>
+        <div><div class="stat-num">∞</div><div class="stat-label">CURIOSITY</div></div>
+      </div>
+    </div>
+    <!-- PHOTO: uses your GitHub profile picture. Replace the src with photo.jpg to use your own file. -->
+    <div class="hero-photo-wrap">
+      <div class="photo-ring">
+        <div class="photo-inner">
+          <img src="https://github.com/Manju735.png?size=460" alt="Manjunatha H"/>
+        </div>
+      </div>
+      <div class="photo-badge">
+        <div class="pb-name">Manjunatha H</div>
+        <div class="pb-role">Embedded Systems Dev</div>
+        <div class="pb-status">🟢 Open to Work</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-tag">01 // about</div>
+    <h2 class="section-title">Who I Am</h2>
+    <div class="divider"></div>
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <p>I'm <strong>Manjunatha H</strong>, an Embedded Systems Developer from Bengaluru, India. I hold a B.E. in Electrical & Electronics Engineering from Jain Institute of Technology, Davanagere.</p>
+        <p>My passion lives at the intersection of hardware and software — where every <strong>byte counts</strong> and every bit has a purpose. I love understanding how things work at the lowest level.</p>
+        <p>I've built real projects in C that touch file I/O, bitwise operations, binary parsing, and memory management. I've completed <strong>UART, I2C, SPI, CAN and RTOS</strong>, and put them to work in PIC18 projects like a <strong>CAN-based automotive dashboard</strong> and a <strong>Car Black Box</strong>.</p>
+        <p>I've also worked through Linux basics, Embedded Linux and <strong>Linux Internals / Kernel</strong>. I don't wait for a classroom — I pick a concept, break it down, and build something with it.</p>
+      </div>
+      <div class="about-card fade-up">
+        <h3>// quick_info.c</h3>
+        <div class="info-row"><span class="info-label">Name</span><span class="info-val">Manjunatha H</span></div>
+        <div class="info-row"><span class="info-label">Role</span><span class="info-val">Embedded Systems Dev</span></div>
+        <div class="info-row"><span class="info-label">Education</span><span class="info-val">B.E. EEE</span></div>
+        <div class="info-row"><span class="info-label">College</span><span class="info-val">JIT Davanagere</span></div>
+        <div class="info-row"><span class="info-label">Location</span><span class="info-val">Bengaluru, India</span></div>
+        <div class="info-row"><span class="info-label">Language</span><span class="info-val">Embedded C</span></div>
+        <div class="info-row"><span class="info-label">Email</span><span class="info-val">manjunathah735@gmail.com</span></div>
+        <div class="info-row"><span class="info-label">Status</span><span class="info-val" style="color:var(--green);">🟢 Open to Work</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-tag">02 // skills</div>
+    <h2 class="section-title">What I Know</h2>
+    <div class="divider"></div>
+    <div class="skills-grid">
+      <div class="skill-card fade-up">
+        <div class="skill-card-title">Core Skills</div>
+        <div class="skill-item"><div class="skill-name"><span>Embedded C</span><span class="skill-pct">95%</span></div><div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>C++</span><span class="skill-pct">75%</span></div><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>Data Structures (C)</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>Bitwise Operations</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>Memory Management</span><span class="skill-pct">78%</span></div><div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div></div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-card-title">Protocols & RTOS</div>
+        <div class="skill-item"><div class="skill-name"><span>UART</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>I2C</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>SPI</span><span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>CAN Bus</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>RTOS (FreeRTOS)</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-card-title">Systems & Linux</div>
+        <div class="skill-item"><div class="skill-name"><span>Embedded Linux</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>Linux Internals / Kernel</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>Linux Basics & Shell</span><span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>File I/O in C</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>GCC / GDB</span><span class="skill-pct">75%</span></div><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>Git & GitHub</span><span class="skill-pct">75%</span></div><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-card-title">Completed</div>
+        <div class="badge-row" style="margin-bottom:1.2rem;">
+          <span class="badge badge-done">✓ UART</span>
+          <span class="badge badge-done">✓ I2C</span>
+          <span class="badge badge-done">✓ SPI</span>
+          <span class="badge badge-done">✓ CAN Bus</span>
+          <span class="badge badge-done">✓ RTOS</span>
+          <span class="badge badge-done">✓ Embedded Linux</span>
+          <span class="badge badge-done">✓ Linux Internals</span>
+        </div>
+        <div class="skill-card-title">Currently Learning</div>
+        <div class="badge-row" style="margin-bottom:1.2rem;">
+          <span class="badge badge-learn">ARM Cortex-M</span>
+        </div>
+        <div class="skill-card-title">Tools</div>
+        <div class="badge-row">
+          <span class="badge badge-tool">GCC</span>
+          <span class="badge badge-tool">GDB</span>
+          <span class="badge badge-tool">VS Code</span>
+          <span class="badge badge-tool">Git</span>
+          <span class="badge badge-tool">GitHub</span>
+          <span class="badge badge-tool">Linux</span>
+          <span class="badge badge-tool">Shell</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-tag">03 // projects</div>
+    <h2 class="section-title">What I've Built</h2>
+    <div class="divider"></div>
+    <div class="projects-grid">
+
+      <!-- PROJECT 1 -->
+      <div class="project-card fade-up">
+        <div class="project-top">
+          <div class="project-num">PROJECT_01</div>
+          <div class="project-icon icon-green">🚗</div>
+          <div class="project-title">CAN-Based Automotive Dashboard</div>
+          <p class="project-desc">A 3-ECU instrument cluster on PIC18 microcontrollers exchanging live speed, gear, RPM and turn-indicator data over the CAN bus. A dedicated node renders it all on a 16x2 LCD dashboard, with turn-signal LEDs and a buzzer.</p>
+          <div class="project-tech">
+            <span class="tech-pill">Embedded C</span>
+            <span class="tech-pill">CAN Protocol</span>
+            <span class="tech-pill">PIC18</span>
+            <span class="tech-pill">ADC</span>
+            <span class="tech-pill">LCD</span>
+          </div>
+        </div>
+        <div class="project-bottom"><a href="https://github.com/Manju735/can_based_automative_dashboard" target="_blank" class="project-link">View on GitHub ↗</a></div>
+      </div>
+
+      <!-- PROJECT 2 -->
+      <div class="project-card fade-up">
+        <div class="project-top">
+          <div class="project-num">PROJECT_02</div>
+          <div class="project-icon icon-green">📦</div>
+          <div class="project-title">Car Black Box (Event Data Recorder)</div>
+          <p class="project-desc">A PIC18-based automotive black box that timestamps every gear-shift and collision event using a DS1307 RTC and permanently logs it to external EEPROM. An on-device menu lets you view, download (over UART) and clear the logs.</p>
+          <div class="project-tech">
+            <span class="tech-pill">Embedded C</span>
+            <span class="tech-pill">I2C</span>
+            <span class="tech-pill">UART</span>
+            <span class="tech-pill">RTC</span>
+            <span class="tech-pill">EEPROM</span>
+            <span class="tech-pill">State Machine</span>
+          </div>
+        </div>
+        <div class="project-bottom"><a href="https://github.com/Manju735/Car_Black_Box_Reference" target="_blank" class="project-link">View on GitHub ↗</a></div>
+      </div>
+
+      <!-- PROJECT 3 -->
+      <div class="project-card fade-up">
+        <div class="project-top">
+          <div class="project-num">PROJECT_03</div>
+          <div class="project-icon icon-purple">🔍</div>
+          <div class="project-title">Inverted Search Engine</div>
+          <p class="project-desc">A high-performance search engine in C — just like how Google indexes the web. Builds an inverted index using Hash Tables & Linked Lists so keyword searches across thousands of files happen in O(1) time instead of scanning every file.</p>
+          <div class="project-tech">
+            <span class="tech-pill">C</span>
+            <span class="tech-pill">Hash Tables</span>
+            <span class="tech-pill">Linked Lists</span>
+            <span class="tech-pill">Dynamic Memory</span>
+            <span class="tech-pill">File Handling</span>
+            <span class="tech-pill">Modular Code</span>
+          </div>
+        </div>
+        <div class="project-bottom"><a href="https://github.com/Manju735/inverted_project" target="_blank" class="project-link">View on GitHub ↗</a></div>
+      </div>
+
+      <!-- PROJECT 4 -->
+      <div class="project-card fade-up">
+        <div class="project-top">
+          <div class="project-num">PROJECT_04</div>
+          <div class="project-icon icon-purple">🔐</div>
+          <div class="project-title">LSB Steganography</div>
+          <p class="project-desc">Hides secret messages inside BMP images by replacing the Least Significant Bit of every pixel byte. Completely invisible to the human eye. Supports any file extension with full metadata encoding and decoding.</p>
+          <div class="project-tech">
+            <span class="tech-pill">Embedded C</span>
+            <span class="tech-pill">Bitwise Ops</span>
+            <span class="tech-pill">Binary File I/O</span>
+            <span class="tech-pill">Structs</span>
+            <span class="tech-pill">CLI Args</span>
+          </div>
+        </div>
+        <div class="project-bottom"><a href="https://github.com/Manju735/Steganograpy" target="_blank" class="project-link">View on GitHub ↗</a></div>
+      </div>
+
+      <!-- PROJECT 5 -->
+      <div class="project-card fade-up">
+        <div class="project-top">
+          <div class="project-num">PROJECT_05</div>
+          <div class="project-icon icon-cyan">📒</div>
+          <div class="project-title">Address Book</div>
+          <p class="project-desc">Full CLI contact management system — add, search, edit, delete contacts with name, phone & email validation. Data persisted to file using File I/O. No database, no libraries — pure C from scratch.</p>
+          <div class="project-tech">
+            <span class="tech-pill">C</span>
+            <span class="tech-pill">Structs & Arrays</span>
+            <span class="tech-pill">File Handling</span>
+            <span class="tech-pill">String Ops</span>
+            <span class="tech-pill">Modular Code</span>
+          </div>
+        </div>
+        <div class="project-bottom"><a href="https://github.com/Manju735/address-book-project" target="_blank" class="project-link">View on GitHub ↗</a></div>
+      </div>
+
+      <!-- PROJECT 6 -->
+      <div class="project-card fade-up">
+        <div class="project-top">
+          <div class="project-num">PROJECT_06</div>
+          <div class="project-icon icon-green">🎵</div>
+          <div class="project-title">MP3 Tag Reader</div>
+          <p class="project-desc">Binary file parser that reads ID3 metadata from MP3 files — title, artist, album, year, genre. Directly seeks to the last 128 bytes and reads fixed-size fields. No external libraries, pure binary parsing.</p>
+          <div class="project-tech">
+            <span class="tech-pill">C</span>
+            <span class="tech-pill">Binary Parsing</span>
+            <span class="tech-pill">fseek / fread</span>
+            <span class="tech-pill">Struct Mapping</span>
+          </div>
+        </div>
+        <div class="project-bottom"><a href="https://github.com/Manju735/Mp3_tag_reader" target="_blank" class="project-link">View on GitHub ↗</a></div>
+      </div>
+
+      <!-- PROJECT 7 -->
+      <div class="project-card fade-up">
+        <div class="project-top">
+          <div class="project-num">PROJECT_07</div>
+          <div class="project-icon icon-cyan">🔢</div>
+          <div class="project-title">Arbitrary Precision Calculator (APC)</div>
+          <p class="project-desc">A calculator that performs arithmetic on integers of unlimited size using Linked Lists — addition, subtraction and multiplication on numbers far beyond standard data type limits, built with clean modular code and shared headers.</p>
+          <div class="project-tech">
+            <span class="tech-pill">C</span>
+            <span class="tech-pill">Linked Lists</span>
+            <span class="tech-pill">Dynamic Memory</span>
+            <span class="tech-pill">Modular Design</span>
+            <span class="tech-pill">GCC</span>
+          </div>
+        </div>
+        <div class="project-bottom"><a href="https://github.com/Manju735/APC" target="_blank" class="project-link">View on GitHub ↗</a></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="section-inner">
+    <div class="section-tag">04 // journey</div>
+    <h2 class="section-title">My Road So Far</h2>
+    <div class="divider"></div>
+    <div class="timeline">
+      <div class="tl-item fade-up">
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-date">2022 — 2025</div>
+        <div class="tl-title">B.E. Electrical & Electronics Engineering</div>
+        <div class="tl-sub">Jain Institute of Technology, Davanagere</div>
+        <div class="tl-desc">Core electronics, digital systems, circuit analysis, microcontrollers. Strong foundation in how hardware works at the circuit level.</div>
+      </div>
+      <div class="tl-item fade-up">
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-date">2024</div>
+        <div class="tl-title">Embedded C & Linux Deep Dive</div>
+        <div class="tl-sub">Self-driven Learning</div>
+        <div class="tl-desc">Mastered Embedded C — pointers, memory management, bitwise operations, file I/O, structs, and modular programming. Picked up Linux basics and shell scripting.</div>
+      </div>
+      <div class="tl-item fade-up">
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-date">2025</div>
+        <div class="tl-title">Built Real Projects in C</div>
+        <div class="tl-sub">LSB Steganography · Address Book · MP3 Tag Reader · Inverted Search · APC</div>
+        <div class="tl-desc">Applied every concept into real working projects — bitwise manipulation, binary file parsing, CLI systems, data structures, modular code architecture.</div>
+      </div>
+      <div class="tl-item fade-up">
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-date">Dec 2025 — Present</div>
+        <div class="tl-title">Embedded Training at Emertxe — Protocols, RTOS & Linux</div>
+        <div class="tl-sub">UART · I2C · SPI · CAN · RTOS · Embedded Linux · Linux Kernel</div>
+        <div class="tl-desc">Professional training at Emertxe Information Technologies (Emertxe Certified Embedded Professional, Spot Award — Jan 2026). Finished the communication protocols used in real embedded products and the Linux stack from basics to internals. Put them to work in two PIC18 automotive projects: a CAN-based dashboard and a Car Black Box.</div>
+      </div>
+      <div class="tl-item fade-up">
+        <div class="tl-dot" style="border-color:var(--green)"><div class="tl-dot-inner" style="background:var(--green)"></div></div>
+        <div class="tl-date" style="color:var(--green)">Next 🚀</div>
+        <div class="tl-title">Embedded Systems / Firmware Engineer</div>
+        <div class="tl-sub">Open to Work — Bengaluru & Remote</div>
+        <div class="tl-desc">Ready to contribute to a real embedded team with strong C fundamentals, protocol experience and a mindset that treats every byte as important. Currently studying ARM Cortex-M on the side.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="section-inner">
+    <div class="section-tag">05 // posts</div>
+    <h2 class="section-title">Things I've Shared</h2>
+    <div class="divider"></div>
+    <div class="blog-grid">
+      <div class="blog-card fade-up">
+        <span class="blog-tag">Steganography</span>
+        <div class="blog-title">I changed 1 bit per pixel — and hid a secret message inside an image</div>
+        <div class="blog-excerpt">Real low-level magic is quiet. I replaced the LSB of every pixel byte and nobody could see the difference — but the data was right there...</div>
+        <div class="blog-meta"><span>Embedded C · Bitwise</span><span>LinkedIn</span></div>
+      </div>
+      <div class="blog-card fade-up">
+        <span class="blog-tag">Address Book</span>
+        <div class="blog-title">No frameworks. No database. Just me, C, and a blank terminal.</div>
+        <div class="blog-excerpt">I built an Address Book from absolute zero — because I wanted to FEEL what real data management looks like at the code level...</div>
+        <div class="blog-meta"><span>C · File I/O · Structs</span><span>LinkedIn</span></div>
+      </div>
+      <div class="blog-card fade-up">
+        <span class="blog-tag">MP3 Parser</span>
+        <div class="blog-title">Your music player knows the song name. But your MP3 is just bytes.</div>
+        <div class="blog-excerpt">Inside every MP3, the last 128 bytes follow the ID3 structure. I built a C program that reads them directly — no libraries, no shortcuts...</div>
+        <div class="blog-meta"><span>C · Binary Parsing</span><span>LinkedIn</span></div>
+      </div>
+      <div class="blog-card fade-up">
+        <span class="blog-tag">Learning</span>
+        <div class="blog-title">I don't have a job yet. But every single day I'm doing this.</div>
+        <div class="blog-excerpt">UART. I2C. SPI. CAN. Nobody taught me this in college. I learned it because embedded systems is what I want to do. Not because I have to...</div>
+        <div class="blog-meta"><span>UART · I2C · SPI · CAN</span><span>LinkedIn</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESUME -->
+<section id="resume">
+  <div class="section-inner">
+    <div class="section-tag">06 // resume</div>
+    <h2 class="section-title">Download Resume</h2>
+    <div class="divider"></div>
+    <div class="resume-box fade-up">
+      <div class="resume-icon">📄</div>
+      <h3>Manjunatha H — Resume</h3>
+      <p>Embedded Systems Developer | Embedded C | C++ | Embedded Linux | CAN · UART · I2C · SPI · RTOS<br/>B.E. EEE — Jain Institute of Technology, Davanagere<br/>Open to Embedded Systems / Firmware Engineer roles</p>
+      <a href="resume.pdf" download class="resume-btn">⬇ Download Resume (PDF)</a>
+      <div class="resume-note">// Click to download · PDF format</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-tag">07 // contact</div>
+    <h2 class="section-title">Let's Connect</h2>
+    <div class="divider"></div>
+    <div class="contact-grid">
+      <div>
+        <p style="color:var(--muted);font-size:0.95rem;line-height:1.8;margin-bottom:2rem;">Actively looking for Embedded Systems / Firmware Engineer roles. If you're hiring or just want to talk embedded — reach out!</p>
+        <a href="mailto:manjunathah735@gmail.com" class="contact-link">
+          <div class="contact-icon">✉</div>
+          <div><div class="contact-info-text">Email</div><div class="contact-info-val">manjunathah735@gmail.com</div></div>
+        </a>
+        <a href="https://github.com/Manju735" target="_blank" class="contact-link">
+          <div class="contact-icon">GH</div>
+          <div><div class="contact-info-text">GitHub</div><div class="contact-info-val">github.com/Manju735</div></div>
+        </a>
+        <a href="https://linkedin.com/in/hmanjunatha" target="_blank" class="contact-link">
+          <div class="contact-icon">in</div>
+          <div><div class="contact-info-text">LinkedIn</div><div class="contact-info-val">linkedin.com/in/hmanjunatha</div></div>
+        </a>
+        <a href="resume.pdf" download class="contact-link">
+          <div class="contact-icon">⬇</div>
+          <div><div class="contact-info-text">Resume</div><div class="contact-info-val">Download PDF</div></div>
+        </a>
+      </div>
+      <div class="contact-form">
+        <div class="form-group"><label>// your_name</label><input type="text" placeholder="Your name"/></div>
+        <div class="form-group"><label>// your_email</label><input type="email" placeholder="Your email"/></div>
+        <div class="form-group"><label>// message</label><textarea placeholder="Hey Manju, I'd like to connect about..."></textarea></div>
+        <button class="form-submit">Send Message →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="footer-logo">manju.dev</div>
+    <div class="footer-copy">Manjunatha H © 2026 · Built with HTML · CSS · passion for low-level systems</div>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting) e.target.classList.add('visible');});
+},{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>idth=device-width, initial-scale=1.0"/>
 <title>Manjunatha H — Embedded Systems Developer</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <style>
